@@ -3,12 +3,15 @@ import {bootstrap} from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS, APP_BASE_HREF} from 'angular2/router';
 import {AppCmp} from './app/components/app';
 import {IMAGELAZYLOAD_PROVIDERS} from 'ng2-image-lazy-load/ng2-image-lazy-load';
+import {HTTP_PROVIDERS} from 'angular2/http';
 
-if ('<%= ENV %>' === 'prod') { enableProdMode(); }
+if ('<%= ENV %>' === 'prod') {
+  enableProdMode();
+}
 
 bootstrap(AppCmp, [
-  ROUTER_PROVIDERS,IMAGELAZYLOAD_PROVIDERS
-  provide(APP_BASE_HREF, { useValue: '/' })
+  ROUTER_PROVIDERS, HTTP_PROVIDERS, IMAGELAZYLOAD_PROVIDERS
+  provide(APP_BASE_HREF, {useValue: '/'})
 ]);
 
 // In order to start the Service Worker located at "./sw.js"
